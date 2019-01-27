@@ -10,8 +10,10 @@ This is a boiler plate project for FSD Certification Practice Check. Fork this p
 | 5. Implement Authentication Service | Modify the test cases based on inclusion of Authentication. |
 | 6. Implement CI/CD | Automate the deployment of WAR using Jenkins. |
 | 7. Implement Front End and consume Rest Services | Implement front end using Angular. Implement Unit Testing using Karma. Implement end to end testing with Protractor. |
+| 8. Document the steps for build and deployment | Create a subheading for this in README.md and include the steps to deploy. |
+| 9. Create docker compose for this application | |
 
-# Application Functionality in detail (Include this is issue description of forked project)
+# Application Functionality in detail (Include this in issue description of forked project)
 
 ## Role: News Analyst
 1. Signup (Choose language during signup)
