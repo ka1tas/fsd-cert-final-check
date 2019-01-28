@@ -1,0 +1,21 @@
+<h1>Latest News</h1>
+
+<div class="card m-5 p-2" *ngFor="let news of articles">
+    <div class="card-header">
+    <h3>{{news.title}}</h3>
+    <h4>
+    <i class="fa fa-star float-right" style="color: goldenrod; cursor: pointer;"> </i>
+    </h4>
+    <small>{{news.description}}</small>
+    </div>
+    <div class="card-body">
+        <img src="{{news.urlToImage}}" alt="image" height="200" width="400">
+    <p>{{news.content}}</p>
+    <small>
+        <a href="{{news.url}}">See full News</a>
+        
+       </small>
+    
+    </div>
+    </div>
+    <br>
