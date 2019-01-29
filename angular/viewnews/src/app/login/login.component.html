@@ -9,30 +9,24 @@
     
                 </div>
                 <div class="card-body">
-                    <form [formGroup]="form" >
+                    <form [formGroup]="loginform" >
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
     
-                        <!-- 	<select class="form-control" #userName>
-                                <option value="kaitas"> Kaitas</option>
-                                <option value="sudhir"> Sudheer</option>
-                                <option value="ramesh"> Ramesh</option>
-                                </select> -->
     
     
-    
-                                <select class="form-control" #userName>
+                             <!--    <select class="form-control" #userName>
                                     <option *ngFor="let user of alluser" value="{{user.userName}}">
                                       {{user.userName}} </option>
-                                  </select>
+                                  </select> -->
     
     
     
-                        <!-- 	<input type="text" class="form-control" value="kaitas"  #userName> -->
+                       <input type="text" class="form-control" placeholder="username"  #userName> 
                         </div>
-                        <!-- <div *ngIf="form.get('userName').touched && form.get('userName').invalid">
+                       <div *ngIf="form.get('userName').touched && form.get('userName').invalid">
                             
                                 <div *ngIf="form.get('userName').errors.required" class="alert alert-danger">UserName is required</div>
                                 <div *ngIf="form.get('userName').errors.minlength" class="alert alert-danger">UserName must be minimum 2
@@ -41,38 +35,38 @@
                                     characters</div>
                                 <div *ngIf="form.get('userName').errors.cannotContainSpace" class="alert alert-danger">userName should not be
                                     any space</div>
-                            </div> -->
+                            </div>
                             <br>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" value="12345"  #passWord>
+                            <input type="password" class="form-control" placeholder="password" #passWord>
                             
                         </div>
-            <!-- 			<div *ngIf="form.get('password').touched && form.get('password').invalid">
+            		<div *ngIf="form.get('password').touched && form.get('password').invalid">
                                 <div *ngIf="form.get('password').errors.required" class="alert alert-danger">password is required</div>
     
                                 <div *ngIf="form.get('password').errors.minlength" class="alert alert-danger">Password must be minimum 2
                                     characters</div>
                                 <div *ngIf="form.get('password').errors.maxlength" class="alert alert-danger">Password must be maximun 8
                                     characters</div>
-                            </div> -->
-                        <div class="row align-items-center remember">
+                            </div> 
+                        <!-- <div class="row align-items-center remember">
                             <input type="checkbox">Remember Me
-                        </div>
+                        </div> -->
                         <div class="form-group">
-                            <input type="button" value="Login" (click)="add(userName.value, passWord.value);"
+                            <input type="button" value="Login" (click)="login();"
                              class="btn float-right login_btn">
                         </div>
                     </form>
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                        Don't have an account?<a routerLink="/signup">Sign Up</a>
+                        Don't have an account?  
                     </div>
                     <div class="d-flex justify-content-center">
-                        <a href="#">Forgot your password?</a>
+                        <a href="/signup">Signup Here</a>
                     </div>
                 </div>
             </div>

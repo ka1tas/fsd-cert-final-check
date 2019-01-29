@@ -1,3 +1,70 @@
-<p>
-  signup works!
-</p>
+<div class="signup-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4 col-12 col-sm-12">
+
+
+        <div class="row mar20">
+          <div class="col-md-12 col-sm-12 col-12">
+            <div class="inner-section">
+              <form [formGroup]="signupform" >
+                <div class="mar20 inside-form">
+                  <h2 class="font_white text-center"><i class="fas fa-user-plus"></i> &nbsp; SIGN UP</h2>
+                  <br>
+                  <div class="input-group">
+                  
+                    <input type="text" class="form-control"  formControlName="name" placeholder="Name">
+                  </div>
+
+
+                  <div class="input-group">
+                  
+                    <input type="email" class="form-control"  formControlName="email" placeholder="Email">
+                  </div>
+
+                  <div class="input-group">
+                
+
+                    <select class="form-control"   formControlName="language" >
+                      <option class="optionns" *ngFor="let language of alllanguages" value="{{language.id}}">
+                        {{language.name}} </option>
+                    </select>
+
+                  </div>
+
+                  <div class="input-group">
+                  
+                    <select class="form-control" formControlName="role" >
+                      <option class="optionns" *ngFor="let role of allroles" value="{{role.id}}">
+                        {{role.name}} </option>
+                    </select>
+                  </div>
+
+                  <div class="input-group">
+                 
+                    <input type="password" class="form-control" name="text" formControlName="password" placeholder="Password">
+                  </div>
+                  <div class="footer text-center">
+                    <button class="btn btn-success btn-round btn-lg" (click)="signup();">Sign Up</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4"></div>
+
+
+
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+</div>

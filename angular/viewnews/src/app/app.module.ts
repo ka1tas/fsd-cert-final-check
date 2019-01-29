@@ -9,12 +9,14 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NewsComponent } from './news/news.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    NewsComponent
+    NewsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

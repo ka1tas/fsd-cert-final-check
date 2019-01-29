@@ -2,83 +2,86 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
+CREATE SCHEMA IF NOT EXISTS `viewnews` DEFAULT CHARACTER SET latin1 ;
+USE `viewnews` ;
 
 -- -----------------------------------------------------
--- Table `vienews`.`language`
+-- Table `viewnews`.`language`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vienews`.`language` ;
-
-CREATE  TABLE IF NOT EXISTS `vienews`.`language` (
-  `la_id` INT NOT NULL AUTO_INCREMENT ,
+CREATE  TABLE IF NOT EXISTS `viewnews`.`language` (
+  `la_id` INT(11) NOT NULL AUTO_INCREMENT ,
   `la_name` VARCHAR(200) NOT NULL ,
   PRIMARY KEY (`la_id`) )
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `vienews`.`role`
+-- Table `viewnews`.`role`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vienews`.`role` ;
-
-CREATE  TABLE IF NOT EXISTS `vienews`.`role` (
-  `ro_id` INT NOT NULL AUTO_INCREMENT ,
+CREATE  TABLE IF NOT EXISTS `viewnews`.`role` (
+  `ro_id` INT(11) NOT NULL AUTO_INCREMENT ,
   `ro_name` VARCHAR(95) NOT NULL ,
   PRIMARY KEY (`ro_id`) )
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `vienews`.`user`
+-- Table `viewnews`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vienews`.`user` ;
-
-CREATE  TABLE IF NOT EXISTS `vienews`.`user` (
-  `us_id` INT NOT NULL AUTO_INCREMENT ,
+CREATE  TABLE IF NOT EXISTS `viewnews`.`user` (
+  `us_id` INT(11) NOT NULL AUTO_INCREMENT ,
   `us_name` VARCHAR(80) NOT NULL ,
   `us_email` VARCHAR(85) NOT NULL ,
-  `us_language` INT NOT NULL ,
+  `us_role` INT(11) NOT NULL ,
+  `us_language` INT(11) NOT NULL ,
   `us_password` VARCHAR(85) NOT NULL ,
-  `us_role` INT NOT NULL ,
+  `us_blocked` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`us_id`) ,
+  UNIQUE INDEX `us_email_UNIQUE` (`us_email` ASC) ,
   INDEX `us_la_id` (`us_language` ASC) ,
   INDEX `us_ro_id` (`us_role` ASC) ,
   CONSTRAINT `us_la_id`
     FOREIGN KEY (`us_language` )
-    REFERENCES `vienews`.`language` (`la_id` )
+    REFERENCES `viewnews`.`language` (`la_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `us_ro_id`
     FOREIGN KEY (`us_role` )
-    REFERENCES `vienews`.`role` (`ro_id` )
+    REFERENCES `viewnews`.`role` (`ro_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 9
+DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `vienews`.`article`
+-- Table `viewnews`.`article`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vienews`.`article` ;
-
-CREATE  TABLE IF NOT EXISTS `vienews`.`article` (
-  `ar_id` INT NOT NULL AUTO_INCREMENT ,
-  `ar_us_id` INT NULL ,
-  `ar_language` INT NOT NULL ,
+CREATE  TABLE IF NOT EXISTS `viewnews`.`article` (
+  `ar_id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `ar_us_id` INT(11) NULL DEFAULT NULL ,
+  `ar_language` INT(11) NOT NULL ,
   `ar_author` VARCHAR(250) NOT NULL ,
-  `ar_title` VARCHAR(250) NOT NULL ,
+  `ar_title` VARCHAR(450) NOT NULL ,
   `ar_description` TEXT NOT NULL ,
-  `ar_publishedAt` VARCHAR(155) NULL ,
-  `ar_content` TEXT NULL ,
-  `ar_url` VARCHAR(150) NULL ,
-  `ar_urlToImage` VARCHAR(250) NULL ,
+  `ar_publishedAt` VARCHAR(155) NULL DEFAULT NULL ,
+  `ar_content` TEXT NULL DEFAULT NULL ,
+  `ar_url` VARCHAR(150) NULL DEFAULT NULL ,
+  `ar_urlToImage` VARCHAR(250) NULL DEFAULT NULL ,
   PRIMARY KEY (`ar_id`) ,
   INDEX `as_us_fk` (`ar_us_id` ASC) ,
   CONSTRAINT `as_us_fk`
     FOREIGN KEY (`ar_us_id` )
-    REFERENCES `vienews`.`user` (`us_id` )
+    REFERENCES `viewnews`.`user` (`us_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
 
 
 
