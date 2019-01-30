@@ -12,6 +12,12 @@ export class SignupComponent implements OnInit {
 
   alllanguages:any;
   allroles:any;
+  error=false;
+  status={
+    signupStatus:false,
+    emailExist:false
+  };
+
   constructor(public service: SignupService) {  }
 
   ngOnInit() {
@@ -71,10 +77,20 @@ this.json = JSON.stringify({
 this.service.addUser(this.json).subscribe(data=>{
 
   console.log(data);
-  this.signupform.reset();
-  alert("saved man! saved!");
+ 
+  this.status=data;
+      this.error=false;
+      console.log(this.status);
+      if(this.status.signupStatus==true){
+        this.signupform.reset();
+      }
     
-})
+},
+error=>{
+  this.error=true;
+}
+
+)
 
 
 }

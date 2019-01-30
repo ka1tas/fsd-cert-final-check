@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cts.viewnews.bean.AuthenticationStatus;
 import com.cts.viewnews.bean.Language;
 import com.cts.viewnews.bean.Role;
 import com.cts.viewnews.bean.SignUpStatus;
 import com.cts.viewnews.bean.User;
 import com.cts.viewnews.dao.LanguageRepository;
 import com.cts.viewnews.dao.RoleRepository;
-import com.cts.viewnews.dao.UserDao;
 import com.cts.viewnews.dao.UserRepository;
 
 @Service
@@ -61,6 +61,33 @@ public class UserService {
 		LOGGER.info("Inside of findAllNewsAnalysts() method of UserService");
 		Role role = roleRepository.findById(2);
 		return userRepository.findByRole(role);
+	}
+	
+
+	@Transactional
+	public AuthenticationStatus login(User user) {
+		LOGGER.info("Inside of login() method of UserService");
+		AuthenticationStatus status = new AuthenticationStatus();
+		
+		String email= user.getEmail();
+		String password = user.getPassword();
+		User actualUser = userRepository.findByEmail(email);
+		
+		if(actualUser==null){
+			status.setAuthStatus(false);
+			status.setUser(null);
+		}
+		else{
+		String actualPassword = actualUser.getPassword();
+			if(actualPassword.equals(password)){	
+				
+				status.setAuthStatus(true);
+				status.setUser(actualUser);
+			}						
+		}
+		
+		return status;
+		
 	}
 
 }

@@ -1,48 +1,66 @@
+
+<br><br>
+
 <div class="signup-body">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4"></div>
       <div class="col-lg-4 col-12 col-sm-12">
-
-
         <div class="row mar20">
           <div class="col-md-12 col-sm-12 col-12">
             <div class="inner-section">
-              <form [formGroup]="signupform" >
+
+              <div *ngIf="status.signupStatus" class="alert alert-success">
+                <h4>User added successfully!</h4>
+
+              </div>
+
+              <div *ngIf="status.emailExist" class="alert alert-danger">
+                <h4>Email Already Exists!</h4>
+
+              </div>
+
+              <div *ngIf="error" class="alert alert-danger">
+                <h4>Something went wrong! Retry or contact admin.</h4>
+              </div>
+
+              <form [formGroup]="signupform">
                 <div class="mar20 inside-form">
                   <h2 class="font_white text-center"><i class="fas fa-user-plus"></i> &nbsp; SIGN UP</h2>
                   <br>
                   <div class="input-group">
-                  
-                    <input type="text" class="form-control"  formControlName="name" placeholder="Name">
+                    <h2> <i class="fa fa-user"></i></h2>
+
+                    <input type="text" class="form-control" formControlName="name" placeholder="Name">
                   </div>
 
 
                   <div class="input-group">
-                  
-                    <input type="email" class="form-control"  formControlName="email" placeholder="Email">
+                    <h2> <i class="fas fa-envelope"></i></h2>
+                    <input type="email" class="form-control" formControlName="email" placeholder="Email">
                   </div>
 
                   <div class="input-group">
-                
 
-                    <select class="form-control"   formControlName="language" >
+                    <h2><i class="fas fa-language"></i></h2>
+                    <select class="form-control" formControlName="language">
                       <option class="optionns" *ngFor="let language of alllanguages" value="{{language.id}}">
                         {{language.name}} </option>
                     </select>
-
                   </div>
 
+
+
                   <div class="input-group">
-                  
-                    <select class="form-control" formControlName="role" >
+                    <h2><i class="fas fa-user-circle"></i></h2>
+                    <select class="form-control" formControlName="role">
                       <option class="optionns" *ngFor="let role of allroles" value="{{role.id}}">
                         {{role.name}} </option>
                     </select>
                   </div>
 
                   <div class="input-group">
-                 
+                    <h2><i class="fas fa-key"></i></h2>
                     <input type="password" class="form-control" name="text" formControlName="password" placeholder="Password">
                   </div>
                   <div class="footer text-center">
@@ -53,18 +71,8 @@
             </div>
           </div>
         </div>
-
-        <div class="col-lg-4"></div>
-
-
-
       </div>
-
-
-
-
-
-
+      <div class="col-lg-4"></div>
     </div>
   </div>
 </div>

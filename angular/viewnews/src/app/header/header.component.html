@@ -1,25 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <a class="navbar-brand" href="">ViewNews</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-danger">
-        <a class="navbar-brand" href="">ViewNews</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto topnav">
-                <li class="nav-item active m-2">
-                    <a class="nav-link" href="/news">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item m-2">
-                    <a class="nav-link" href="#">Favourites</a>
-                </li>
-
-               
-                <li  class="nav-item m-1" ><a class="nav-item btn btn-dark col-12"   routerLink="/login"><i class="fas fa-sign-in-alt"></i>Login</a></li>
-                <li  class="nav-item m-1"><a  class="nav-item btn btn-dark col-12"  routerLink="/signup"><i class="fas fa-user-plus"></i>SignUp</a></li>
-            </ul>
-        </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto topnav">
+            <li class="nav-item active m-2">
+                <a class="nav-link" routerLink="/news">Home <span class="sr-only">(current)</span></a>
+            </li>
+           
+            <ng-container *ngIf="authService.role=='Admin';">
+                    <li class="nav-item active m-2">
+                            <a class="nav-link" routerLink="/findanalyst">Find Analysts <span class="sr-only">(current)</span></a>
+                        </li>
+            </ng-container>
 
             
 
-    </nav>
+            <ng-container *ngIf="authService.loggedIn; else elseTemplate">
+
+                    <li class="nav-item m-2">
+                            <a class="nav-link" routerLink="/favourite">Favourites</a>
+                        </li>
+
+                        <li class="nav-item m-1"><a class="nav-item btn btn-dark col-12" (click)="logout()" ><i class="fas fa-sign-in-alt"></i>Logout</a></li>
+
+            </ng-container>
+            <ng-template #elseTemplate>
+
+
+                <li class="nav-item m-1"><a class="nav-item btn btn-dark col-12" routerLink="/login"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+                <li class="nav-item m-1"><a class="nav-item btn btn-dark col-12" routerLink="/signup"><i class="fas fa-user-plus"></i>SignUp</a></li>
+
+            </ng-template>
+
+        </ul>
+    </div>
+
+
+
+</nav>

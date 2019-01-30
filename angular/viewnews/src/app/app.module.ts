@@ -10,13 +10,17 @@ import { SignupComponent } from './signup/signup.component';
 import { NewsComponent } from './news/news.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
+import { FindanalystComponent } from './findanalyst/findanalyst.component';
+import { FavouriteComponent } from './favourite/favourite.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     NewsComponent,
-    HeaderComponent
+    HeaderComponent,
+    FindanalystComponent,
+    FavouriteComponent
   ],
   imports: [
     BrowserModule,

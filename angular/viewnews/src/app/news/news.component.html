@@ -1,21 +1,63 @@
-<h1>Latest News</h1>
+<!-- <h1>Latest News</h1>
+<div class="container">
+    <div class="row">
+        <div class="card col-lg-5 m-3 p-2" *ngFor="let news of articles">
+            <div class="card-header">
+                <h3>{{news.title}}</h3>
+                <h4>
+                    <i class="fa fa-star float-right" style="color: goldenrod; cursor: pointer;"> </i>
+                </h4>
+                <small>{{news.description}}</small>
+            </div>
+            <div class="card-body">
+                <img src="{{news.urlToImage}}" alt="image" height="150" width="300">
+                <p>{{news.content}}</p>
+                <small>
+                    <a href="{{news.url}}">See full News</a>
 
-<div class="card m-5 p-2" *ngFor="let news of articles">
-    <div class="card-header">
-    <h3>{{news.title}}</h3>
-    <h4>
-    <i class="fa fa-star float-right" style="color: goldenrod; cursor: pointer;"> </i>
-    </h4>
-    <small>{{news.description}}</small>
+                </small>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <img src="{{news.urlToImage}}" alt="image" height="200" width="400">
-    <p>{{news.content}}</p>
-    <small>
-        <a href="{{news.url}}">See full News</a>
-        
-       </small>
-    
+</div>
+<br>
+ -->
+
+<div class="demo">
+    <div class="container">
+        <h3 class="h3">News</h3>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 "  *ngFor="let news of articles">
+                <div id="news-slider2" class="owl-carousel">
+                    <div class="post-slide2">
+                        <div class="post-img">
+                            <a href="{{news.url}}"> 
+                                <img src="{{news.urlToImage}}"
+                                    alt=""> </a>
+                        </div>
+                        
+                        <div class="post-content">
+                            <h3 class="post-title">{{news.title}}</h3>
+                            <p >{{news.description}}</p>
+                            <p class="post-description">
+                                    {{news.content}}
+                            </p>
+                            <ul class="post-bar">
+                                <li><i class="fa fa-calendar"></i> {{news.publishedAt | date:'fullDate'}}</li>
+                                <li>
+                                    <i class="fa fa-user"></i>
+                                    <a href="{{news.author}}"> Author</a>
+                                  
+                                </li>
+                            </ul>
+                            <h4> <i class="fa fa-star float-right" style="color: goldenrod; cursor: pointer;"> </i> </h4>
+                            <a href="{{news.url}}" class="read-more">read more</a>
+                       
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    <br>
+</div>
