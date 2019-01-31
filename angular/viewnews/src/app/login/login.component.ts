@@ -54,7 +54,8 @@ export class LoginComponent implements OnInit {
       if (this.status.authStatus == true) {
         this.authService.login();
         this.authService.setRole(data.user.role.name);
-        this.authService.setEmployeeId(data.user.employeeId);
+        this.authService.setLanguage(data.user.language.name);
+        this.authService.setUserId(data.user.id);
 
         this.router.navigate(['/news']);
       }

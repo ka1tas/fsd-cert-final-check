@@ -7,19 +7,19 @@ export class AuthService {
 
   loggedIn = false;
   role: string;
-  employeeId: string;
-
+  userId: number;
+  language:string;
 
   constructor() { }
 
  
   
-  getEmployeeId() {
-    return this.employeeId;
+  getUserId() {
+    return this.userId;
   }
 
-  setEmployeeId(employeeId: any) {
-    this.employeeId = employeeId;
+  setUserId(userId: any) {
+    this.userId = userId;
   }
 
  
@@ -40,5 +40,14 @@ export class AuthService {
 
   setRole(role: string) {
     this.role = role;
+  }
+
+
+  getLanguage() {
+    return this.language;
+  }
+
+  setLanguage(language: string) {
+    this.language = language;
   }
 }

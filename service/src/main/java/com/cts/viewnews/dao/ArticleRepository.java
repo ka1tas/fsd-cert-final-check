@@ -5,15 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cts.viewnews.bean.Role;
+import com.cts.viewnews.bean.Article;
 import com.cts.viewnews.bean.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
-
-	User findByEmail(String email);
+public interface ArticleRepository extends JpaRepository<Article, Integer> {
 	
-	User findById(int id);
-	List<User> findByRole(Role role);
-
+	List<Article> findByUser (User user);
 }
