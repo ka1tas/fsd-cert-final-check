@@ -31,7 +31,7 @@
                                   
                                 </li>
                             </ul>
-                            <h4> <i class="fa fa-star float-right" (click)="addfav(news)" style="color: goldenrod; cursor: pointer;"> </i> </h4>
+                            <h4 *ngIf="authServce.loggedIn"> <i class="fa fa-star float-right" (click)="addfav(news)" data-toggle="modal" data-target="#myModal" style="color: goldenrod; cursor: pointer;"> </i> </h4>
                             <a href="{{news.url}}" class="read-more">read more</a>
                        
                             
@@ -42,3 +42,37 @@
         </div>
     </div>
 </div>
+
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+       
+            <div *ngIf="status.saveArticle" class="alert alert-success">
+                <h4>Article added to your favourite list!</h4>
+                <p>Go to the favourite page to find it anytime.</p>
+
+              </div>
+
+              <div *ngIf="status.articleExist" class="alert alert-danger">
+                <h4>Article already present in your list!</h4>
+              </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+      </div>
+      </div>

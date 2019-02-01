@@ -11,9 +11,17 @@ export class NewsComponent implements OnInit {
   articles:any;
   lang:String="en";
   userId:any;
+
+  status={
+    saveArticle:false,
+    articleExist:false
+  };
+
   constructor( public authServce: AuthService, public artService:ArticleService) { }
 
   ngOnInit() {
+
+    
 
     if(this.authServce.loggedIn){
       this.lang= this.authServce.getLanguage();
@@ -24,29 +32,8 @@ export class NewsComponent implements OnInit {
     console.log("User Id "+this.userId);
 
     console.log(" language "+this.lang);
-    const NewsAPI = require('newsapi');
+/*     const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('71f791c2b2044004b9e096eb3ef76478');
-    // To query /v2/top-headlines
-    // All options passed to topHeadlines are optional, but you need to include at least one of them
-    /*  newsapi.v2.topHeadlines({
-    
-     // category: 'business',
-      language: 'this.lang',
-      country: 'us'
-    }).then(response => {
-      console.log(response);
-      this.articles= response.articles;
-      /*
-        {
-          status: "ok",
-          articles: [...]
-        }
-      
-      
-    });
-     */
-     
-   
     newsapi.v2.everything({
     
       sources: 'bbc-news,the-verge,the-times-of-india',
@@ -59,34 +46,34 @@ export class NewsComponent implements OnInit {
     }).then(response => {
       console.log(response);
       this.articles= response.articles;
-      /*
-        {
-          status: "ok",
-          articles: [...]
-        }
-      */
-    });
-
   
-    
+    }); */
+
+    this.artService.showArticle(this.lang).subscribe(data=>{
+      this.articles= data.articles;
+      console.log(data);
+      
+    },
+    error=>{
+
+    });  
   }
 
 
 addfav(article:any){
  // console.log(article);
-
+ console.log("inside the whole");
  console.log("user id" +this.userId);
+
   let json = JSON.stringify({
     article:article,
-    user:{
-      id: this.userId
-    }
-
+    userId: this.userId
   })
   console.log(json);
-  this.artService.addArticle(json).subscribe(data=>{
 
+  this.artService.addArticle(json).subscribe(data=>{
     console.log(data);
+   this.status=data;
       
   },
   error=>{
@@ -94,7 +81,7 @@ addfav(article:any){
       
   }
   
-  )
+  );
   
 
 }

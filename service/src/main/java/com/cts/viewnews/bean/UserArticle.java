@@ -3,7 +3,7 @@ package com.cts.viewnews.bean;
 public class UserArticle {
 
 	private Article article;
-	private User user;
+	private int userId;
 
 	public UserArticle() {
 		super();
@@ -18,17 +18,19 @@ public class UserArticle {
 		this.article = article;
 	}
 
-	public User getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	@Override
 	public String toString() {
-		return "UserArticle [article=" + article + ", user=" + user + "]";
+		return "UserArticle [article=" + article + ", userId=" + userId + "]";
 	}
+
+
 
 }

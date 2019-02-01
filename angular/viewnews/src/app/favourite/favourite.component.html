@@ -1,3 +1,41 @@
-<p>
-  favourite works!
-</p>
+
+
+
+<div class="demo">
+  <div class="container">
+      <h3 class="h3">News</h3>
+      <div class="row">
+          <div class="col-md-6 col-lg-6 col-12 col-sm-12"  *ngFor="let news of articles">
+              <div id="news-slider2" class="owl-carousel">
+                  <div class="post-slide2">
+                      <div class="post-img">
+                          <a href="{{news.url}}"> 
+                              <img src="{{news.urlToImage}}"
+                                  alt=""> </a>
+                      </div>
+                      
+                      <div class="post-content">
+                          <h3 class="post-title">{{news.title}}</h3>
+                         <!--  <p >{{news.description}}</p> -->
+                          <p class="post-description">
+                                  {{news.content}}
+                          </p>
+                          <ul class="post-bar">
+                              <li><i class="fa fa-calendar"></i> {{news.publishedAt | date:'fullDate'}}</li>
+                              <li>
+                                  <i class="fa fa-user"></i>
+                                  <a href="{{news.author}}"> Author</a>
+                                
+                              </li>
+                          </ul>
+                          <h4 *ngIf="authServce.loggedIn"> <i class="fa fa-times float-right" (click)="removefav(news)" style="color: goldenrod; cursor: pointer;"> </i> </h4>
+                          <a href="{{news.url}}" class="read-more">read more</a>
+                     
+                          
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

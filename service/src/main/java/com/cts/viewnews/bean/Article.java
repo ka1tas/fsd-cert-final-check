@@ -9,10 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "article")
+
 public class Article {
 
 	@Id
@@ -40,9 +45,8 @@ public class Article {
 	@Column(name = "ar_content")
 	private String content;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "ar_us_id")
-	private User user;
+	@Column(name = "ar_us_id")
+	private int userId;
 
 	public int getId() {
 		return id;
@@ -102,20 +106,23 @@ public class Article {
 		this.content = content;
 	}
 
-	public User getUser() {
-		return user;
+
+
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	@Override
 	public String toString() {
 		return "Article [id=" + id + ", author=" + author + ", title=" + title + ", url=" + url + ", urlToImage="
-				+ urlToImage + ", publishedAt=" + publishedAt + ", content=" + content + ", user=" + user + "]";
+				+ urlToImage + ", publishedAt=" + publishedAt + ", content=" + content + ", userId=" + userId + "]";
 	}
 
+	
 
 	
 	
