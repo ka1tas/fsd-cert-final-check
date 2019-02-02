@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../article.service';
 
 @Component({
   selector: 'app-findanalyst',
@@ -6,10 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./findanalyst.component.css']
 })
 export class FindanalystComponent implements OnInit {
+  list:any;
 
-  constructor() { }
+
+  constructor(public artService : ArticleService) { }
 
   ngOnInit() {
+  }
+
+
+  searchAnalyst(name:any){
+    console.log(name);
+
+    this.artService.showAnalyst(name).subscribe(data=>{
+      this.list= data;
+      console.log(data);
+        console.log("inside the showana");
+        
+    },
+    error=>{
+
+    });
+
   }
 
 }

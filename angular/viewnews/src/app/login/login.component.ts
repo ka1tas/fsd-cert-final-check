@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   json: any;
   error = false;
   status = {
-    authStatus: false,
+    authStatus: true,
 
   };
 

@@ -1,7 +1,17 @@
 <div class="login-body">
     <br><BR>
     <div class="container-fluid ">
+
+            <div *ngIf="!status.authStatus" id="errorwrong" class="alert alert-danger">
+                    <h4>Email or Password did not matched!</h4>
+    
+                  </div>
+
         <div class="d-flex justify-content-center h-100 mb-0">
+
+        
+
+
             <div class="card">
                 <div class="card-header">
                     <h3><i class="fas fa-sign-in-alt"></i>Sign In</h3>
@@ -23,7 +33,7 @@
 
 
 
-                            <input type="text" class="form-control" formControlName="email" placeholder="Enter email">
+                            <input type="text" class="form-control" formControlName="email" id="loginemail" placeholder="Enter email">
                         </div>
                         <div *ngIf="loginform.get('email').touched && loginform.get('email').invalid">
 
@@ -40,7 +50,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" formControlName="password" placeholder="password" >
+                            <input type="password" class="form-control" formControlName="password" id="loginpassword" placeholder="password" >
 
                         </div>
                         <div *ngIf="loginform.get('password').touched && loginform.get('password').invalid">
@@ -58,7 +68,7 @@
                             <input type="checkbox">Remember Me
                         </div>
                         <div class="form-group">
-                            <input type="button" value="Login" (click)="login();" class="btn float-right login_btn">
+                            <input type="button" id="loginbutton" value="Login" (click)="login();" class="btn float-right login_btn">
                         </div>
                     </form>
                 </div>

@@ -1,16 +1,18 @@
+<br><br>
 <div class="container">
-<br>
   <div class="row">
-<div class="col-lg-2"></div>
-<div class="col-lg-8">
+    <div class="col-lg-2 col-md-2 "></div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+      <input type="text" class="form-control" placeholder="Search Analyst"  #name>
+    </div>
 
-  <input type="text" class="form-contol" id="searchAnalyst">
+    <div class="col-lg-2  col-md-2 col-sm-12 col-12 ">
+      <button class="btn btn-success inline-block col-12 col-sm-12" (click)="searchAnalyst(name.value)"> Search </button>
+    </div>
 
-  <button class="btn btn-success inline-block"> Search </button>
+    <div class="col-lg-2 col-md-2"> </div>
 
-</div>
-<div class="col-lg-2"></div>
   </div>
 
- 
+
 </div>
