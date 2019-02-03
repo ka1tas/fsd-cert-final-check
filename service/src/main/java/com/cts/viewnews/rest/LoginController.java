@@ -14,7 +14,7 @@ import com.cts.viewnews.service.UserService;
 
 @RestController
 @RequestMapping("/login")
-public class LoginController {
+public class LoginController extends ExceptionController {
 
 private static final Logger LOGGER = LoggerFactory.getLogger(SignUpController.class);
 	

@@ -23,6 +23,19 @@ public class Role {
 	@Column(name = "ro_name")
 	private String name;
 
+	
+	
+	public Role() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Role(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	public int getId() {
 		return id;
 	}

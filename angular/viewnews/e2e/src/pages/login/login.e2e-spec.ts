@@ -4,7 +4,7 @@ import { NewsPage } from '../news/news.po';
 describe('Login page', () => {
     let page: LoginPage;
     // tslint:disable-next-line:label-position
-     let article = new NewsPage();
+     let news = new NewsPage();
     const EC = protractor.ExpectedConditions;
 
     beforeEach(() => {
@@ -13,21 +13,21 @@ describe('Login page', () => {
     });
 
 
-    it('should be able to login', () => {
-        page.sendEmailForLogin().sendKeys('sa@g.com');
+    it('successful login', () => {
+        page.sendEmailForLogin().sendKeys('s@g.com');
         page.sendPasswordForLogin().sendKeys('12345');
         page.getLoginButton().click();
-        browser.wait(EC.visibilityOf(article.getTitle()));
-        expect(article.getTitle().isPresent()).toBeTruthy();
-        expect(browser.driver.getCurrentUrl()).toContain('/article');
+        browser.wait(EC.visibilityOf(news.getTitle()));
+        expect(news.getTitle().isPresent()).toBeTruthy();
+        expect(browser.driver.getCurrentUrl()).toContain('/news');
     });
 
-    it('should be not be able to login if email is wrong', () => {
+    it('failed login', () => {
         page.sendEmailForLogin().sendKeys('email@gmail.com');
         page.sendPasswordForLogin().sendKeys('A123456');
         page.getLoginButton().click();
         browser.wait(EC.visibilityOf(page.getErrorMessage()));
-        expect(page.getErrorMessage().getText()).toBe('Invalid Email Id or Password.');
+        expect(page.getErrorMessage().getText()).toBe('Email or Password did not matched!');
     });
 });
 

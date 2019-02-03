@@ -35,7 +35,6 @@ public class UserService {
 	public SignUpStatus save(User user) {
 		LOGGER.info("START : Inside save() method of UserService");
 		LOGGER.debug("User Object :  {}", user);
-
 		SignUpStatus status = new SignUpStatus();
 		status.setSignupStatus(false);
 		status.setEmailExist(true);
@@ -56,38 +55,37 @@ public class UserService {
 		return status;
 	}
 
+	
 	@Transactional
 	public List<User> findAllNewsAnalysts() {
 		LOGGER.info("Inside of findAllNewsAnalysts() method of UserService");
 		Role role = roleRepository.findById(2);
 		return userRepository.findByRole(role);
 	}
-	
 
 	@Transactional
 	public AuthenticationStatus login(User user) {
 		LOGGER.info("Inside of login() method of UserService");
 		AuthenticationStatus status = new AuthenticationStatus();
-		
-		String email= user.getEmail();
+		LOGGER.debug("user Object :  {}", user);
+		String email = user.getEmail();
 		String password = user.getPassword();
 		User actualUser = userRepository.findByEmail(email);
-		
-		if(actualUser==null){
+		LOGGER.debug("ActualUser Object :  {}", actualUser);
+		if (actualUser == null) {
 			status.setAuthStatus(false);
 			status.setUser(null);
-		}
-		else{
-		String actualPassword = actualUser.getPassword();
-			if(actualPassword.equals(password)){	
-				
+		} else {
+			String actualPassword = actualUser.getPassword();
+			if (actualPassword.equals(password)) {
+
 				status.setAuthStatus(true);
 				status.setUser(actualUser);
-			}						
+			}
 		}
-		
+		LOGGER.debug("status Object :  {}", status);
 		return status;
-		
+
 	}
 
 }

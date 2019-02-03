@@ -17,7 +17,7 @@ import com.cts.viewnews.service.ArticleService;
 
 @RestController
 @RequestMapping("/art")
-public class ArticleController {
+public class ArticleController extends ExceptionController{
 
 private static final Logger LOGGER = LoggerFactory.getLogger(ArticleController.class);
 

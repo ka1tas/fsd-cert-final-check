@@ -5,7 +5,7 @@ export class NewsPage {
     getTitle() {
         return element(by.id('titlee'));
     }
-
+/* 
     sendEmailForLogin() {
         return element(by.id('loginemail'));
     }
@@ -16,5 +16,5 @@ export class NewsPage {
     getLoginButton() {
         return element(by.id('loginbutton'));
     }
-
+ */
 }

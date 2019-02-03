@@ -10,7 +10,7 @@ import com.cts.viewnews.service.UserService;
 
 @RestController
 @RequestMapping("/admin")
-public class AdminController {
+public class AdminController extends ExceptionController{
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
 

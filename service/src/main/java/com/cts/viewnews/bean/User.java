@@ -10,11 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
-// @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "us_id",
-// "us_name", "us_password", "us_email","us_username","us_role","us_language" })
-// })
 @Table(name = "user")
 public class User {
 
@@ -23,19 +23,19 @@ public class User {
 	@Column(name = "us_id")
 	private int id;
 
-	// @NotNull(message = "Name cannot be empty")
-	// @Size(min = 1,max=50, message = "Name must be of 1 to 20 characters")
+	@NotNull(message = "Name cannot be empty")
+	@Size(min = 1,max=50, message = "Name must be of 1 to 20 characters")
 	@Column(name = "us_name")
 	private String name;
 
-	// @NotNull(message = "Email cannot be empty")
-	// @Pattern(regexp = ".+@.+\\..+", message = "Email address is invalid")
-	// @Size(min = 1,max=250, message = "Email must be of 3 to 250 characters")
+	@NotNull(message = "Email cannot be empty")
+	@Pattern(regexp = ".+@.+\\..+", message = "Email address is invalid")
+	@Size(min = 1,max=250, message = "Email must be of 3 to 250 characters")
 	@Column(name = "us_email")
 	private String email;
 
-	// @NotNull(message = "Password cannot be empty")
-	// @Size(min =3,max=25, message = "Passsword must be of 3 to 25 characters")
+	@NotNull(message = "Password cannot be empty")
+	@Size(min =3,max=25, message = "Passsword must be of 3 to 25 characters")
 	@Column(name = "us_password")
 	private String password;
 	
@@ -49,6 +49,30 @@ public class User {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "us_language")
 	private Language language;
+	
+	
+	
+	
+
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+	public User(int id, String name, String email, String password, String blocked, Role role, Language language) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.blocked = blocked;
+		this.role = role;
+		this.language = language;
+	}
+
+
 
 	public int getId() {
 		return id;

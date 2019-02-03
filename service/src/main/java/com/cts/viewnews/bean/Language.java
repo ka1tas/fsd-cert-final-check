@@ -22,6 +22,19 @@ public class Language {
 
 	@Column(name = "la_name")
 	private String name;
+	
+	
+
+	public Language() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Language(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	public int getId() {
 		return id;

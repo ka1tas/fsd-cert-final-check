@@ -21,7 +21,7 @@ import com.cts.viewnews.service.UserService;
 
 @RestController
 @RequestMapping("/signup")
-public class SignUpController {
+public class SignUpController extends ExceptionController{
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(SignUpController.class);
 	
