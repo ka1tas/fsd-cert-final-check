@@ -39,9 +39,9 @@ public class SignupControllerMockMVC {
 	@Test
 	public void testSuccessfullSignup() throws Exception {
 		LOGGER.info("START");
-		String USER_DATA = "{\"email\" : \"sankar@sinha.com\"" + "," + "\"name\" : \"Sankar\"" + ","
-				+ "\"password\" : \"saikat12\"}";
-		mockMvc.perform(post("/signup/adduser").content(USER_DATA).contentType("application/json;charset=UTF-8"))
+		String USER_DATA = "{\"email\" : \"sankar@sinha.com\"" + "," + "\"name\" : \"Sankar\"" + "," + "\"role\" : {\"id\":1}" + 
+		"," + "\"language\" :{\"id\":1}" + "\"password\" : \"saikat12\" }";
+		mockMvc.perform(post("/signup/add").content(USER_DATA).contentType("application/json;charset=UTF-8"))
 				.andExpect(status().isOk()).andExpect(jsonPath("$.signupStatus").value("true"));
 
 		LOGGER.info("END");
