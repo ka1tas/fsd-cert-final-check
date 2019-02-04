@@ -11,7 +11,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  emailPattern = "^[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,4}$";
   json: any;
   error = false;
   userBlocked=false;
@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
     email: new FormControl(
       '',
       [Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(5),
+      Validators.pattern(this.emailPattern)
       ]),
     password: new FormControl(
       '',

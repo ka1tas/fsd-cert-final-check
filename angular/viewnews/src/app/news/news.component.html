@@ -1,12 +1,31 @@
 
 
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-md-2 "></div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+      <input type="text" class="form-control" placeholder="Search News" #name>
+    </div>
 
+    <div class="col-lg-2  col-md-2 col-sm-12 col-12 ">
+      <button class="btn btn-success inline-block col-12 col-sm-12" (click)="searchNews(name.value)"> Search </button>
+    </div>
+
+    <div class="col-lg-2 col-md-2"> </div>
+
+  </div>
+
+
+</div>
+
+<br><br>
  
 
 
 <div class="demo">
     <div class="container">
-        <h3 id="titlee" class="h3">News</h3>
+        <h3 id="titlee" class="h3">Top News</h3>
         <div class="row">
             <div class="col-md-6 col-lg-6 col-12 col-sm-12 flex" style="display:flex" *ngFor="let news of articles">
                 <div id="news-slider2" class="owl-carousel">

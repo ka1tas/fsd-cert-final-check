@@ -50,4 +50,12 @@ export class ArticleService {
     return this.http.post<any>(this.changeStatusturl, user, httpOptions);
   }
 
+
+  
+
+  searchNews(name): Observable<any> {
+    let searchNews = "https://newsapi.org/v2/top-headlines?q=" + name + "&apiKey=71f791c2b2044004b9e096eb3ef76478";
+    return this.http.get<any>(searchNews);
+  }
+
 }

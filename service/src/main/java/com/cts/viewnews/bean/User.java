@@ -35,7 +35,7 @@ public class User {
 	private String email;
 
 	@NotNull(message = "Password cannot be empty")
-	@Size(min =3,max=25, message = "Passsword must be of 3 to 25 characters")
+	@Size(min =5,max=25, message = "Passsword must be of 5 to 25 characters")
 	@Column(name = "us_password")
 	private String password;
 	

@@ -32,13 +32,38 @@
                     <h2> <i class="fa fa-user"></i></h2>
 
                     <input type="text" class="form-control" formControlName="name" placeholder="Name">
-                  </div>
+              </div>
+              <div *ngIf="signupform.get('name').touched && signupform.get('name').invalid">
+
+                  <div *ngIf="signupform.get('name').errors.required" class=" alert-danger">*Name is
+                      required</div>
+                  <div *ngIf="signupform.get('name').errors.minlength" class=" alert-danger">Name must
+                      be minimum 1
+                      characters</div>
+                      <div *ngIf="signupform.get('name').errors.maxlength" class=" alert-danger">Name must
+                          be maximum of 50
+                          characters</div>
+              </div>
 
 
                   <div class="input-group">
                     <h2> <i class="fas fa-envelope"></i></h2>
                     <input type="email" class="form-control" formControlName="email" placeholder="Email">
                   </div>
+
+                  <div *ngIf="signupform.get('email').touched && signupform.get('email').invalid">
+
+                      <div *ngIf="signupform.get('email').errors.required" class=" alert-danger">*Email is
+                          required</div>
+                      <div *ngIf="signupform.get('email').errors.minlength" class=" alert-danger">Email must
+                          be minimum 5
+                          characters</div>
+                          <div *ngIf="signupform.get('email').errors.maxlength" class=" alert-danger">Email must
+                              be maximum of 250
+                              characters</div>
+                              <div *ngIf="signupform.get('email').errors.pattern" class="alert-danger">Email pattern is not valid. (name@cognizant.com)</div>
+                  </div>
+    
 
                   <div class="input-group">
 
@@ -47,6 +72,13 @@
                       <option class="optionns" *ngFor="let language of alllanguages" value="{{language.id}}">
                         {{language.name}} </option>
                     </select>
+                  </div>
+
+                  <div *ngIf="signupform.get('language').touched && signupform.get('language').invalid">
+
+                      <div *ngIf="signupform.get('language').errors.required" class=" alert-danger">*language is
+                          required</div>
+                    
                   </div>
 
 
@@ -59,10 +91,31 @@
                     </select>
                   </div>
 
+                  <div *ngIf="signupform.get('role').touched && signupform.get('role').invalid">
+
+                      <div *ngIf="signupform.get('role').errors.required" class=" alert-danger">*role is
+                          required</div>
+                    
+                  </div>
+
                   <div class="input-group">
                     <h2><i class="fas fa-key"></i></h2>
                     <input type="password" class="form-control" name="text" formControlName="password" placeholder="Password">
                   </div>
+                  <div *ngIf="signupform.get('password').touched && signupform.get('password').invalid">
+
+                      <div *ngIf="signupform.get('password').errors.required" class=" alert-danger">*password is
+                          required</div>
+                      <div *ngIf="signupform.get('password').errors.minlength" class=" alert-danger">password must
+                          be minimum 5
+                          characters</div>
+                          <div *ngIf="signupform.get('password').errors.maxlength" class=" alert-danger">password must
+                              be maximum of 50
+                              characters</div>
+                  </div>
+
+
+
                   <div class="footer text-center">
                     <button class="btn btn-success btn-round btn-lg" (click)="signup();">Sign Up</button>
                   </div>

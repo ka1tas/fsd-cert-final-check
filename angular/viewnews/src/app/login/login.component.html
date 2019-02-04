@@ -47,6 +47,9 @@
                             <div *ngIf="loginform.get('email').errors.minlength" class=" alert-danger">UserName must
                                 be minimum 5
                                 characters</div>
+
+                                <div *ngIf="loginform.get('email').errors.pattern" class="alert-danger">Email pattern is not valid. (name@cognizant.com)</div>
+                         
                             
                       
                         </div>

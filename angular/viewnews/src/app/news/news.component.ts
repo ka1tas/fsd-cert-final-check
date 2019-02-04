@@ -87,5 +87,20 @@ addfav(article:any){
 }
 
 
+searchNews(name){
+  console.log(name);
+
+  this.artService.searchNews(name).subscribe(data=>{
+
+    this.articles= data.articles;
+    console.log(data);
+    
+  },
+  error=>{
+
+  });
+}
+
+
 
 }
