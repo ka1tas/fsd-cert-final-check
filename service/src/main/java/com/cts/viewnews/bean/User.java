@@ -24,7 +24,7 @@ public class User {
 	private int id;
 
 	@NotNull(message = "Name cannot be empty")
-	@Size(min = 1,max=50, message = "Name must be of 1 to 20 characters")
+	@Size(min = 1,max=50, message = "Name must be of 1 to 50 characters")
 	@Column(name = "us_name")
 	private String name;
 
@@ -39,13 +39,16 @@ public class User {
 	@Column(name = "us_password")
 	private String password;
 	
+	@NotNull(message = "Status cannot be empty")
 	@Column(name = "us_blocked")
 	private String blocked;
 
+	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "us_role")
 	private Role role;
 
+	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "us_language")
 	private Language language;
