@@ -15,9 +15,9 @@ import com.cts.viewnews.dao.RoleRepository;
 
 @Service
 public class RoleService {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(RoleService.class);
-	
+
 	@Autowired
 	private RoleRepository roleRepository;
 
@@ -26,6 +26,5 @@ public class RoleService {
 		LOGGER.info("Inside of findAllRoles() method of RoleService");
 		return roleRepository.findAll();
 	}
-
 
 }

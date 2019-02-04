@@ -17,39 +17,34 @@ import com.cts.viewnews.service.ArticleService;
 
 @RestController
 @RequestMapping("/art")
-public class ArticleController extends ExceptionController{
+public class ArticleController extends ExceptionController {
 
-private static final Logger LOGGER = LoggerFactory.getLogger(ArticleController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleController.class);
 
-@Autowired
-private ArticleService articleService;
+	@Autowired
+	private ArticleService articleService;
 
+	@PostMapping("/addfav")
+	public ArticleStatus savefav(@RequestBody UserArticle article) {
+		LOGGER.info("Inside of savefav() method of ArticleController");
+		System.out.println("Userarticle in savefav" + article);
+		return articleService.save(article);
+	}
 
-@PostMapping("/addfav")
-public  ArticleStatus savefav(@RequestBody UserArticle article){
-	LOGGER.info("Inside of savefav() method of ArticleController");
-	System.out.println("Userarticle in savefav"+ article);
-	return articleService.save(article);
-}
+	@PostMapping("/showfav")
+	public List<Article> savefav(@RequestBody int userId) {
+		LOGGER.info("Inside of savefav() method of ArticleController");
+		return articleService.findFavArticle(userId);
+	}
 
-@PostMapping("/showfav")
-public  List<Article> savefav(@RequestBody int userId){
-	LOGGER.info("Inside of savefav() method of ArticleController");
-	return articleService.findFavArticle(userId);
-}
-
-
-@PostMapping("/deletefav")
-public boolean deletefav(@RequestBody int artId){
-	LOGGER.info("Inside of savefav() method of ArticleController");
-	System.out.println("hamba hamba="+artId);
-	boolean status=false;
-	 articleService.deleteArticle(artId);
-	  status=true;
-	  return status;
-}
-
-
-
+	@PostMapping("/deletefav")
+	public boolean deletefav(@RequestBody int artId) {
+		LOGGER.info("Inside of savefav() method of ArticleController");
+		System.out.println("hamba hamba=" + artId);
+		boolean status = false;
+		articleService.deleteArticle(artId);
+		status = true;
+		return status;
+	}
 
 }

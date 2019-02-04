@@ -14,9 +14,9 @@ import com.cts.viewnews.dao.LanguageRepository;
 
 @Service
 public class LanguageService {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(LanguageService.class);
-	
+
 	@Autowired
 	private LanguageRepository languageRepository;
 
@@ -25,6 +25,5 @@ public class LanguageService {
 		LOGGER.info("Inside of findAllLanguages() method of LanguageService");
 		return languageRepository.findAll();
 	}
-
 
 }

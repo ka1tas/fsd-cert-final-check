@@ -27,7 +27,7 @@ export class ArticleService {
   }
 
   showArticle(lang): Observable<any> {
-    let viewarticle = "https://newsapi.org/v2/top-headlines?language=" + lang + "&apiKey=71f791c2b2044004b9e096eb3ef76478";
+    let viewarticle = "https://newsapi.org/v2/top-headlines?language=" + lang + "&apiKey=71f791c2b2044004b9e096eb3ef76478&from=2019-01-30";
     return this.http.get<any>(viewarticle);
   }
 
@@ -54,8 +54,9 @@ export class ArticleService {
   
 
   searchNews(name): Observable<any> {
-    let searchNews = "https://newsapi.org/v2/top-headlines?q=" + name + "&apiKey=71f791c2b2044004b9e096eb3ef76478";
+    let searchNews = "https://newsapi.org/v2/everything?q=" + name + "&sortBy=publishedAt&apiKey=71f791c2b2044004b9e096eb3ef76478";
     return this.http.get<any>(searchNews);
   }
+
 
 }

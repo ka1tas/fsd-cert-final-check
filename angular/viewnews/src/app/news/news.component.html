@@ -1,59 +1,56 @@
-
-
 <br><br>
 <div class="container">
-  <div class="row">
-    <div class="col-lg-2 col-md-2 "></div>
-    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-      <input type="text" class="form-control" placeholder="Search News" #name>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 "></div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+            <input type="text" id="newsTopic" class="form-control" placeholder="Search News" #name>
+        </div>
+
+        <div class="col-lg-2  col-md-2 col-sm-12 col-12 ">
+            <button id="searchbutton" class="btn btn-success inline-block col-12 col-sm-12" (click)="searchNews(name.value)">
+                Search </button>
+        </div>
+
+        <div class="col-lg-2 col-md-2"> </div>
     </div>
-
-    <div class="col-lg-2  col-md-2 col-sm-12 col-12 ">
-      <button class="btn btn-success inline-block col-12 col-sm-12" (click)="searchNews(name.value)"> Search </button>
-    </div>
-
-    <div class="col-lg-2 col-md-2"> </div>
-
-  </div>
-
-
 </div>
 
 <br><br>
- 
+
 
 
 <div class="demo">
     <div class="container">
-        <h3 id="titlee" class="h3">Top News</h3>
+        <h3 *ngIf="articles.length>0" id="titlee" class="h3">Top News</h3>
         <div class="row">
             <div class="col-md-6 col-lg-6 col-12 col-sm-12 flex" style="display:flex" *ngFor="let news of articles">
                 <div id="news-slider2" class="owl-carousel">
                     <div class="post-slide2">
                         <div class="post-img">
-                            <a href="{{news.url}}"> 
-                                <img src="{{news.urlToImage}}"
-                                    alt=""> </a>
+                            <a href="{{news.url}}">
+                                <img src="{{news.urlToImage}}" alt=""> </a>
                         </div>
-                        
+
                         <div class="post-content">
                             <h3 class="post-title">{{news.title}}</h3>
-                           <!--  <p >{{news.description}}</p> -->
+                            <!--  <p >{{news.description}}</p> -->
                             <p class="post-description">
-                                    {{news.content}}
+                                {{news.content}}
                             </p>
                             <ul class="post-bar">
                                 <li><i class="fa fa-calendar"></i> {{news.publishedAt | date:'fullDate'}}</li>
                                 <li>
                                     <i class="fa fa-user"></i>
                                     <a href="{{news.author}}"> Author</a>
-                                  
+
                                 </li>
                             </ul>
-                            <h4 *ngIf="authServce.loggedIn"> <i class="fa fa-star float-right" (click)="addfav(news)" data-toggle="modal" data-target="#myModal" style="color: goldenrod; cursor: pointer;"> </i> </h4>
+                            <h4 *ngIf="authServce.loggedIn"> <i class="fa fa-star float-right" (click)="addfav(news)"
+                                    data-toggle="modal" data-target="#myModal" style="color: goldenrod; cursor: pointer;">
+                                </i> </h4>
                             <a href="{{news.url}}" class="read-more">read more</a>
-                       
-                            
+
+
                         </div>
                     </div>
                 </div>
@@ -63,35 +60,35 @@
 </div>
 
 
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
+<!-- The Modal -->
+<div class="modal" id="myModal">
     <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title"></h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-       
-            <div *ngIf="status.saveArticle" class="alert alert-success">
-                <h4>Article added to your favourite list!</h4>
-                <p>Go to the favourite page to find it anytime.</p>
+        <div class="modal-content">
 
-              </div>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
 
-              <div *ngIf="status.articleExist" class="alert alert-danger">
-                <h4>Article already present in your list!</h4>
-              </div>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <!-- Modal body -->
+            <div class="modal-body">
+
+                <div *ngIf="status.saveArticle" class="alert alert-success">
+                    <h4>Article added to your favourite list!</h4>
+                    <p>Go to the favourite page to find it anytime.</p>
+
+                </div>
+
+                <div *ngIf="status.articleExist" class="alert alert-danger">
+                    <h4>Article already present in your list!</h4>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
-      </div>
-      </div>
+</div>

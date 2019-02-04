@@ -42,7 +42,7 @@ public class UserService {
 		LOGGER.debug("existingUser Object :  {}", existingUser);
 		if (existingUser == null) {
 
-			Role role = roleRepository.findById(user.getRole().getId());
+			Role role = roleRepository.findById(2);
 			Language lang = languageRepository.findById(user.getLanguage().getId());
 			user.setRole(role);
 			user.setLanguage(lang);
@@ -55,46 +55,35 @@ public class UserService {
 		return status;
 	}
 
-	
-	@Transactional
-	public List<User> findAllNewsAnalysts() {
-		LOGGER.info("Inside of findAllNewsAnalysts() method of UserService");
-		Role role = roleRepository.findById(2);
-		return userRepository.findByRole(role);
-	}
-	
+
+
 	@Transactional
 	public List<User> showUsers(String name) {
 		LOGGER.info("Inside of showUsers() method of UserService");
-		
 		return userRepository.findByName(name);
 	}
 	
+
 	@Transactional
 	public boolean changeStatus(User user) {
 		LOGGER.info("Inside of showUsers() method of UserService");
-		boolean	status=false;
-	User actualUser =  userRepository.findById(user.getId());
-	String blocked = actualUser.getBlocked();
-	
-	if(blocked.equals("no")){
-		actualUser.setBlocked("yes");
+		boolean status = false;
+		User actualUser = userRepository.findById(user.getId());
+		String blocked = actualUser.getBlocked();
+
+		if (blocked.equals("no")) {
+			actualUser.setBlocked("yes");
+		} else if (blocked.equals("yes")) {
+			actualUser.setBlocked("no");
+		}
+
+		userRepository.save(actualUser);
+
+		status = true;
+
+		return status;
+
 	}
-	else if (blocked.equals("yes")){
-		actualUser.setBlocked("no");
-	}
-	
-	userRepository.save(actualUser);
-	
-	status = true;
-	
-	return status;
-	 
-	}
-	
-	
-	
-	
 
 	@Transactional
 	public AuthenticationStatus login(User user) {
@@ -117,8 +106,8 @@ public class UserService {
 				status.setUser(actualUser);
 				status.setIsblocked(false);
 			}
-			
-			if(actualPassword.equals(password) && blocked.equals("yes")){
+
+			if (actualPassword.equals(password) && blocked.equals("yes")) {
 				status.setAuthStatus(true);
 				status.setUser(actualUser);
 				status.setIsblocked(true);

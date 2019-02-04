@@ -16,16 +16,15 @@ import com.cts.viewnews.service.UserService;
 @RequestMapping("/login")
 public class LoginController extends ExceptionController {
 
-private static final Logger LOGGER = LoggerFactory.getLogger(SignUpController.class);
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(SignUpController.class);
+
 	@Autowired
 	private UserService userService;
-	
-	
+
 	@PostMapping("/check")
-	public  AuthenticationStatus signup(@RequestBody User user){
+	public AuthenticationStatus signup(@RequestBody User user) {
 		LOGGER.info("Inside of signup() method of SignUpController");
-		System.out.println("User in Login"+ user);
+		System.out.println("User in Login" + user);
 		return userService.login(user);
 	}
 

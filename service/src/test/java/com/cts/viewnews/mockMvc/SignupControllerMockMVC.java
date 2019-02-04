@@ -55,7 +55,7 @@ public class SignupControllerMockMVC {
 	public void testExistingEmail() throws Exception {
 		LOGGER.info("START");
 		String USER_DATA = "{\"name\":\"Sankar Sardar\"," + "\"email\":\"s@g.com\"," + "\"password\":\"A123456\","
-				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}," + "\"role\":{\"id\":1}}";
+				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}}";
 
 		LOGGER.debug("JSON Object created :  {}", USER_DATA);
 
@@ -71,7 +71,7 @@ public class SignupControllerMockMVC {
 		LOGGER.info("START");
 
 		String USER_DATA = "{\"email\":\"d@aagmail.com\"," + "\"password\":\"A123456\","
-				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}," + "\"role\":{\"id\":1}}";
+				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}}";
 
 		mockMvc.perform(post("/signup/add").content(USER_DATA).contentType("application/json;charset=UTF-8"))
 				.andExpect(status().is4xxClientError())
@@ -85,7 +85,7 @@ public class SignupControllerMockMVC {
 		LOGGER.info("START");
 
 		String USER_DATA = "{\"name\":\"mailk\"," + "\"password\":\"A123456\","
-				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}," + "\"role\":{\"id\":1}}";
+				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}}";
 
 		mockMvc.perform(post("/signup/add").content(USER_DATA).contentType("application/json;charset=UTF-8"))
 				.andExpect(status().is4xxClientError())
@@ -99,7 +99,7 @@ public class SignupControllerMockMVC {
 		LOGGER.info("START");
 
 		String USER_DATA = "{\"name\":\"mailk\"," + "\"email\":\"saas@gma.hom\","
-				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}," + "\"role\":{\"id\":1}}";
+				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}}";
 
 		mockMvc.perform(post("/signup/add").content(USER_DATA).contentType("application/json;charset=UTF-8"))
 				.andExpect(status().is4xxClientError())
@@ -113,7 +113,7 @@ public class SignupControllerMockMVC {
 		LOGGER.info("START");
 
 		String USER_DATA = "{\"name\":\"mailk\"," + "\"email\":\"saas@gma.hom\","
-				+ "\"password\":\"n154656o\"," + "\"language\":{\"id\":\"1\"}," + "\"role\":{\"id\":1}}";
+				+ "\"password\":\"n154656o\"," + "\"language\":{\"id\":\"1\"}}";
 
 		mockMvc.perform(post("/signup/add").content(USER_DATA).contentType("application/json;charset=UTF-8"))
 				.andExpect(status().is4xxClientError())
@@ -132,7 +132,7 @@ public class SignupControllerMockMVC {
 		LOGGER.info("START");
 
 		String USER_DATA = "{\"name\":\"Sankar Sardar\"," + "\"email\":\"gmail.com\"," + "\"password\":\"A123456\","
-				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}," + "\"role\":{\"id\":1}}";
+				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}}";
 
 		mockMvc.perform(post("/signup/add").content(USER_DATA).contentType("application/json;charset=UTF-8"))
 				.andExpect(status().is4xxClientError())
@@ -147,7 +147,7 @@ public class SignupControllerMockMVC {
 		LOGGER.info("START");
 
 		String USER_DATA = "{\"name\":\"Sankar Sardar\"," + "\"email\":\"Sasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss@gmail.com\"," + "\"password\":\"A123456\","
-				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}," + "\"role\":{\"id\":1}}";
+				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}}";
 
 		mockMvc.perform(post("/signup/add").content(USER_DATA).contentType("application/json;charset=UTF-8"))
 				.andExpect(status().is4xxClientError())
@@ -161,7 +161,7 @@ public class SignupControllerMockMVC {
 		LOGGER.info("START");
 
 		String USER_DATA = "{\"name\":\"Sankar Sardar\"," + "\"email\":\"sa@asgmail.com\"," + "\"password\":\"46\","
-				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}," + "\"role\":{\"id\":1}}";
+				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}}";
 
 		mockMvc.perform(post("/signup/add").content(USER_DATA).contentType("application/json;charset=UTF-8"))
 				.andExpect(status().is4xxClientError())
@@ -175,7 +175,7 @@ public class SignupControllerMockMVC {
 		LOGGER.info("START");
 
 		String USER_DATA = "{\"name\":\"Sankasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssr Sardssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaar\"," + "\"email\":\"sa@asgmail.com\"," + "\"password\":\"4ssssss6\","
-				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}," + "\"role\":{\"id\":1}}";
+				+ "\"blocked\":\"no\"," + "\"language\":{\"id\":\"1\"}}";
 
 		mockMvc.perform(post("/signup/add").content(USER_DATA).contentType("application/json;charset=UTF-8"))
 				.andExpect(status().is4xxClientError())

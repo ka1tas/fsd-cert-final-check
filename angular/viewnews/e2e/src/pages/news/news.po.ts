@@ -2,19 +2,21 @@ import { browser, by, element, promise, ElementFinder, ElementArrayFinder } from
 
 export class NewsPage {
 
+    navigateToNewsPage() {
+        return browser.get('/news');
+    }
+
     getTitle() {
         return element(by.id('titlee'));
     }
-/* 
-    sendEmailForLogin() {
-        return element(by.id('loginemail'));
+ 
+    sendTopicForNews() {
+        return element(by.id('newsTopic'));
     }
 
-    sendPasswordForLogin() {
-        return element(by.id('loginpassword'));
+
+    getSearchButton() {
+        return element(by.id('searchbutton'));
     }
-    getLoginButton() {
-        return element(by.id('loginbutton'));
-    }
- */
+ 
 }

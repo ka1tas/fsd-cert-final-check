@@ -31,8 +31,6 @@ public class Article {
 	@Column(name = "ar_title")
 	private String title;
 
-
-
 	@Column(name = "ar_url")
 	private String url;
 
@@ -44,7 +42,7 @@ public class Article {
 
 	@Column(name = "ar_content")
 	private String content;
-	
+
 	@Column(name = "ar_us_id")
 	private int userId;
 
@@ -71,8 +69,6 @@ public class Article {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-
 
 	public String getUrl() {
 		return url;
@@ -106,8 +102,6 @@ public class Article {
 		this.content = content;
 	}
 
-
-
 	public int getUserId() {
 		return userId;
 	}
@@ -122,10 +116,4 @@ public class Article {
 				+ urlToImage + ", publishedAt=" + publishedAt + ", content=" + content + ", userId=" + userId + "]";
 	}
 
-	
-
-	
-	
-	
-	
 }

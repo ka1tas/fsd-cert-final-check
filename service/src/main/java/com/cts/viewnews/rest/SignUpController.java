@@ -21,44 +21,38 @@ import com.cts.viewnews.service.UserService;
 
 @RestController
 @RequestMapping("/signup")
-public class SignUpController extends ExceptionController{
-	
+public class SignUpController extends ExceptionController {
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(SignUpController.class);
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private LanguageService languageService;
-	
+
 	@Autowired
 	private RoleService roleService;
-	
+
 	@PostMapping("/add")
-	public  SignUpStatus signup(@RequestBody User user){
+	public SignUpStatus signup(@RequestBody User user) {
 		LOGGER.info("Inside of signup() method of SignUpController");
-		System.out.println("User in ciokjhui"+ user);
+		System.out.println("User in ciokjhui" + user);
 		return userService.save(user);
 	}
 
-	
-	@GetMapping("/analyst")
-	public  List<User> getAnalysts( ){
-		LOGGER.info("Inside of getAnalysts() method of SignUpController");
-		return userService.findAllNewsAnalysts();
-	}
-	
+
+
 	@GetMapping("/languages")
-	public  List<Language> getLanguages( ){
+	public List<Language> getLanguages() {
 		LOGGER.info("Inside of getLanguages() method of SignUpController");
 		return languageService.findAllLanguages();
 	}
-	
+
 	@GetMapping("/roles")
-	public  List<Role> getRoles( ){
+	public List<Role> getRoles() {
 		LOGGER.info("Inside of getLanguages() method of SignUpController");
 		return roleService.findAllRoles();
 	}
-
 
 }

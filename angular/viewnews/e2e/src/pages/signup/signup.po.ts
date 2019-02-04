@@ -1,28 +1,42 @@
-/* import { browser, by, element, promise, ElementFinder, ElementArrayFinder } from 'protractor';
+ import { browser, by, element, promise, ElementFinder, ElementArrayFinder } from 'protractor';
 
 export class SignUpPage {
 
-    navigateToLoginPage() {
-        return browser.get('/');
+    navigateToSignUpPage() {
+        return browser.get('/signup');
     }
 
-    getLoginButton() {
-        return element(by.className('btn btn-primary btn-block signup-btn float-right'));
-    }
-    
-    sendEmailForLogin() {
-        return element(by.id('loginemail'));
+    getSignUpButton() {
+        return element(by.id('signupbutton'));
     }
 
-    sendPasswordForLogin() {
-        return element(by.id('loginpassword'));
+    sendNameForSignup() {
+        return element(by.id('signupname'));
     }
-    getLoginButton() {
-        return element(by.className('btn btn-primary btn-block signup-btn float-right'));
+
+    sendEmailForSignup() {
+        return element(by.id('signupemail'));
+    }
+
+    sendPasswordForSignup() {
+        return element(by.id('signuppassword'));
+    }
+
+  /*   sendRoleForSignup() {
+        return element(by.id('signuprole'));
+    } */
+
+    sendLanguageForSignup() {
+        return element(by.id('signuplanguage'));
+    }
+   
+
+    getSuccessMessage() {
+        return element(by.id('successmessege'));
     }
 
     getErrorMessage() {
-        return element(by.className('col form-group alert alert-danger'));
+        return element(by.id('errormessege'));
     }
 
-} */
+} 

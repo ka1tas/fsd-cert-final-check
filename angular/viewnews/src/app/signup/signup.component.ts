@@ -46,8 +46,8 @@ export class SignupComponent implements OnInit {
       Validators.minLength(5),
       Validators.maxLength(250),
       Validators.pattern(this.emailPattern)
-    ]),
-      
+      ]),
+
 
     password: new FormControl(
       '',
@@ -56,10 +56,10 @@ export class SignupComponent implements OnInit {
       Validators.maxLength(25)]),
 
     role: new FormControl(''
-    , [Validators.required]),
+      , [Validators.required]),
 
     language: new FormControl('',
-    [Validators.required])
+      [Validators.required])
 
   });
 
@@ -71,32 +71,29 @@ export class SignupComponent implements OnInit {
       name: this.signupform.controls['name'].value,
       email: this.signupform.controls['email'].value,
       password: this.signupform.controls['password'].value,
-      role: {
+      /* role: {
         id: this.signupform.controls['role'].value,
-      },
+      }, */
       language: {
         id: this.signupform.controls['language'].value,
       },
       blocked: "no"
     });
 
+    console.log(this.json);
+
     this.service.addUser(this.json).subscribe(data => {
-
       console.log(data);
-
       this.status = data;
       this.error = false;
       console.log(this.status);
       if (this.status.signupStatus == true) {
         this.signupform.reset();
       }
-
     },
       error => {
         this.error = true;
-      }
-
-    )
+      });
 
 
   }

@@ -24,45 +24,37 @@ public class User {
 	private int id;
 
 	@NotNull(message = "Name cannot be empty")
-	@Size(min = 1,max=50, message = "Name must be of 1 to 50 characters")
+	@Size(min = 1, max = 50, message = "Name must be of 1 to 50 characters")
 	@Column(name = "us_name")
 	private String name;
 
 	@NotNull(message = "Email cannot be empty")
 	@Pattern(regexp = ".+@.+\\..+", message = "Email address is invalid")
-	@Size(min = 1,max=250, message = "Email must be of 3 to 250 characters")
+	@Size(min = 1, max = 250, message = "Email must be of 3 to 250 characters")
 	@Column(name = "us_email")
 	private String email;
 
 	@NotNull(message = "Password cannot be empty")
-	@Size(min =5,max=25, message = "Passsword must be of 5 to 25 characters")
+	@Size(min = 5, max = 25, message = "Passsword must be of 5 to 25 characters")
 	@Column(name = "us_password")
 	private String password;
-	
+
 	@NotNull(message = "Status cannot be empty")
 	@Column(name = "us_blocked")
 	private String blocked;
 
-	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "us_role")
 	private Role role;
 
-	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "us_language")
 	private Language language;
-	
-	
-	
-	
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
 	public User(int id, String name, String email, String password, String blocked, Role role, Language language) {
 		super();
@@ -74,8 +66,6 @@ public class User {
 		this.role = role;
 		this.language = language;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -138,8 +128,5 @@ public class User {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", blocked="
 				+ blocked + ", role=" + role + ", language=" + language + "]";
 	}
-
-
-
 
 }
