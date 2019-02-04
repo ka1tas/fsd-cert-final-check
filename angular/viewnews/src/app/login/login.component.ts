@@ -14,9 +14,10 @@ export class LoginComponent implements OnInit {
 
   json: any;
   error = false;
+  userBlocked=false;
   status = {
     authStatus: true,
-
+    isblocked:false
   };
 
   constructor(private http: HttpClient, private router: Router, private loginService: LoginService, public authService: AuthService
@@ -46,18 +47,22 @@ export class LoginComponent implements OnInit {
     console.log(this.json);
 
     this.loginService.login(this.json).subscribe(data => {
-
       console.log(data);
-
       this.status = data;
+      console.log("blocked:"+this.status.isblocked);
       this.error = false;
-      if (this.status.authStatus == true) {
+
+      if (this.status.authStatus == true && this.status.isblocked == false) {
         this.authService.login();
         this.authService.setRole(data.user.role.name);
         this.authService.setLanguage(data.user.language.name);
         this.authService.setUserId(data.user.id);
-
         this.router.navigate(['/news']);
+      }
+
+      if (this.status.authStatus == true && this.status.isblocked == true) {
+        this.userBlocked= true;
+      
       }
 
     },

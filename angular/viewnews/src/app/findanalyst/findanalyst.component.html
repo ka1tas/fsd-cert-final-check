@@ -3,14 +3,49 @@
   <div class="row">
     <div class="col-lg-2 col-md-2 "></div>
     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-      <input type="text" class="form-control" placeholder="Search Analyst"  #name>
+      <input type="text" class="form-control" placeholder="Search User" #name>
     </div>
 
     <div class="col-lg-2  col-md-2 col-sm-12 col-12 ">
-      <button class="btn btn-success inline-block col-12 col-sm-12" (click)="searchAnalyst(name.value)"> Search </button>
+      <button class="btn btn-success inline-block col-12 col-sm-12" (click)="searchUser(name.value)"> Search </button>
     </div>
 
     <div class="col-lg-2 col-md-2"> </div>
+
+  </div>
+
+
+</div>
+
+<br><br>
+<div class="container">
+
+  <div class="row">
+
+
+    <div class="card m-2" *ngFor="let user of list">
+
+      <div *ngIf="showActive" class="inlineelements">
+        <ng-container *ngIf="user.blocked == 'no'; else elseTemplate">
+          <h5 class="d-inline"><span style="cursor:pointer" class="badge badge-success cursorpinter" (click)="toggllingStatus(user)">Block</span></h5>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <h5><span style="cursor:pointer" class="badge badge-danger mt-19px cursorpinter" (click)="toggllingStatus(user)">Unblock</span></h5>
+        </ng-template>
+      </div>
+
+
+      <img src="https://keepbrevardbeautiful.org/wp-content/uploads/2018/11/default.png" alt="Avatar" style="width:100%">
+      <div class="container">
+        <h4><b>{{user.name}}</b></h4>
+        <p>{{user.email}}</p>
+
+        <p>{{user.role.name}}</p>
+      </div>
+    </div>
+
+
+
 
   </div>
 

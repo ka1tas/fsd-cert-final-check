@@ -18,8 +18,8 @@ export class ArticleService {
   articlesaveurl: string = "viewnews/art/addfav";
   showfavurl: string = "viewnews/art/showfav";
   deletefavurl: string = "viewnews/art/deletefav";
-  showAnalysturl: string = "";
-
+  showAnalysturl: string ="viewnews/admin/showuser";
+  changeStatusturl: string ="viewnews/admin/block";
   constructor(private http: HttpClient) { }
 
   addArticle(json): Observable<any> {
@@ -42,6 +42,12 @@ export class ArticleService {
 
   showAnalyst(name):Observable<any> {
     return this.http.post<any>(this.showAnalysturl, name, httpOptions);
+  }
+
+
+
+  changeStatus(user):Observable<any> {
+    return this.http.post<any>(this.changeStatusturl, user, httpOptions);
   }
 
 }

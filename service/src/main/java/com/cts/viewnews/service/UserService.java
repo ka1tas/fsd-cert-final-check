@@ -62,6 +62,39 @@ public class UserService {
 		Role role = roleRepository.findById(2);
 		return userRepository.findByRole(role);
 	}
+	
+	@Transactional
+	public List<User> showUsers(String name) {
+		LOGGER.info("Inside of showUsers() method of UserService");
+		
+		return userRepository.findByName(name);
+	}
+	
+	@Transactional
+	public boolean changeStatus(User user) {
+		LOGGER.info("Inside of showUsers() method of UserService");
+		boolean	status=false;
+	User actualUser =  userRepository.findById(user.getId());
+	String blocked = actualUser.getBlocked();
+	
+	if(blocked.equals("no")){
+		actualUser.setBlocked("yes");
+	}
+	else if (blocked.equals("yes")){
+		actualUser.setBlocked("no");
+	}
+	
+	userRepository.save(actualUser);
+	
+	status = true;
+	
+	return status;
+	 
+	}
+	
+	
+	
+	
 
 	@Transactional
 	public AuthenticationStatus login(User user) {
@@ -77,10 +110,18 @@ public class UserService {
 			status.setUser(null);
 		} else {
 			String actualPassword = actualUser.getPassword();
-			if (actualPassword.equals(password)) {
+			String blocked = actualUser.getBlocked();
+			if (actualPassword.equals(password) && blocked.equals("no")) {
 
 				status.setAuthStatus(true);
 				status.setUser(actualUser);
+				status.setIsblocked(false);
+			}
+			
+			if(actualPassword.equals(password) && blocked.equals("yes")){
+				status.setAuthStatus(true);
+				status.setUser(actualUser);
+				status.setIsblocked(true);
 			}
 		}
 		LOGGER.debug("status Object :  {}", status);
