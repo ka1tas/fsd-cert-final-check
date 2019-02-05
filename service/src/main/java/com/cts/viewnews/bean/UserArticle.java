@@ -5,6 +5,14 @@ public class UserArticle {
 	private Article article;
 	private int userId;
 
+	
+	
+	public UserArticle(Article article, int userId) {
+		super();
+		this.article = article;
+		this.userId = userId;
+	}
+
 	public UserArticle() {
 		super();
 		// TODO Auto-generated constructor stub

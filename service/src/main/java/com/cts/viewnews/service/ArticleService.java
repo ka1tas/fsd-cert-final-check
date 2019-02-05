@@ -24,7 +24,7 @@ public class ArticleService {
 
 	@Transactional
 	public List<Article> findFavArticle(int userId) {
-		LOGGER.info("Inside of findAllRoles() method of ArticleService");
+		LOGGER.info("Inside of findFavArticle() method of ArticleService");
 		return articleRepository.findByUserId(userId);
 	}
 
@@ -39,7 +39,7 @@ public class ArticleService {
 
 	@Transactional
 	public ArticleStatus save(UserArticle userArticle) {
-		LOGGER.info("Inside of findAllRoles() method of RoleService");
+		LOGGER.info("Inside of save() method of ArticleService");
 
 		ArticleStatus status = new ArticleStatus();
 		int id = userArticle.getUserId();

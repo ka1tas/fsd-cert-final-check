@@ -5,6 +5,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -16,8 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cts.viewnews.bean.Article;
-import com.cts.viewnews.bean.AuthenticationStatus;
-import com.cts.viewnews.bean.User;
+import com.cts.viewnews.bean.ArticleStatus;
+import com.cts.viewnews.bean.UserArticle;
 import com.cts.viewnews.dao.ArticleRepository;
 import com.cts.viewnews.dao.LanguageRepository;
 import com.cts.viewnews.dao.RoleRepository;
@@ -53,22 +54,36 @@ public class ArtcleServiceMockito {
 	@Test
 	public void testSuccesfullLogin() {
 		LOGGER.info("START of testSuccesfullLogin() testing in UserSeviceMockito");
-		User testUser = new User();
-		testUser.setEmail("s@g.com");
-		testUser.setPassword("12345");
-		testUser.setBlocked("no");
 		
-		List<Article> articles; 
+		int id = 1;
+		Article testArticle = new Article();
+		testArticle.setUserId(id);
+		testArticle.setContent("Hello sa sasa");
 		
-		when(articleRepository.findByUserId(testUser.getId())).thenReturn(testUser);
+		Article testArticle2 = new Article();
+		testArticle.setUserId(2);
+		testArticle.setContent("Not Hello sa sasssa");
+		
+		
+		List<Article> testArticles = new ArrayList<Article>();
+		testArticles.add(testArticle2);
+		testArticles.add(testArticle);
+		
+		UserArticle testUserArticle = new UserArticle(testArticle,id);
 
-		AuthenticationStatus expectedstatus = new AuthenticationStatus();
-		expectedstatus.setAuthStatus(true);
-		expectedstatus.setUser(testUser);
+	
+		
+		when(articleRepository.findByUserId(testUserArticle.getUserId())).thenReturn(testArticles);
+		when(articleRepository.save(testArticle)).thenReturn(testArticle);
+
+		
+		ArticleStatus expectedstatus = new ArticleStatus();
+		expectedstatus.setSaveArticle(true);
+		expectedstatus.setArticleExist(false);
 		LOGGER.debug("status Should be test: " + expectedstatus);
-		boolean status = service.login(testUser);
+		ArticleStatus status = service.save(testUserArticle);
 		LOGGER.debug("status from test: " + status);
-		verify(userRepository, times(1)).findByEmail(testUser.getEmail());
+		verify(articleRepository, times(1)).save(testArticle);
 		assertEquals(true, expectedstatus.equals(status));
 		LOGGER.info("END of testSuccesfullLogin() testing in UserSeviceMockito");
 	}
