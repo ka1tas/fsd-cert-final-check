@@ -9,6 +9,8 @@ export class AuthService {
   role: string;
   userId: number;
   language:string;
+  userData: any;
+
 
   constructor() { }
 
@@ -24,14 +26,20 @@ export class AuthService {
 
  
 
-  login() {
-    console.log("Inside auth service login()");
-    this.loggedIn = true;
+
+  login(authenticationData) {
+    console.log('"Inside auth service login()"');
+    sessionStorage.clear();
+    this.loggedIn = true;  
+    sessionStorage.setItem('currentUser', JSON.stringify(authenticationData));
+
   }
 
   logout() {
     console.log("Inside auth service logout()");
     this.loggedIn = false;
+    this.role = null;
+    this.userId=null;
   }
 
   getRole() {
@@ -40,6 +48,7 @@ export class AuthService {
 
   setRole(role: string) {
     this.role = role;
+
   }
 
 

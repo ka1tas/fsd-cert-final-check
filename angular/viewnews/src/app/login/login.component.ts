@@ -54,21 +54,17 @@ export class LoginComponent implements OnInit {
       this.error = false;
 
       if (this.status.authStatus == true && this.status.isblocked == false) {
-        this.authService.login();
+        this.authService.login(data);
         this.authService.setRole(data.user.role.name);
         this.authService.setLanguage(data.user.language.name);
         this.authService.setUserId(data.user.id);
         this.router.navigate(['/news']);
       }
 
-      if (this.status.authStatus == true && this.status.isblocked == true) {
-        this.userBlocked= true;
-      
-      }
-
     },
       error => {
         this.error = true;
+       
       }
 
     )

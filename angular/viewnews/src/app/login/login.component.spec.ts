@@ -12,7 +12,7 @@ import { FindanalystComponent } from '../findanalyst/findanalyst.component';
 import { LoginService } from '../login.service';
 import { FavouriteComponent } from '../favourite/favourite.component';
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let de : DebugElement;

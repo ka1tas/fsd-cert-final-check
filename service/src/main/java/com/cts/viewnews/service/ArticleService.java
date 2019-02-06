@@ -28,14 +28,12 @@ public class ArticleService {
 		return articleRepository.findByUserId(userId);
 	}
 
-	
 	@Transactional
 	public void deleteArticle(int artId) {
 		LOGGER.info("Inside of deleteArticle() method of ArticleService");
 		Article article = articleRepository.findById(artId);
 		articleRepository.delete(article);
 	}
-	
 
 	@Transactional
 	public ArticleStatus save(UserArticle userArticle) {

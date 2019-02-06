@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cts.viewnews.bean.AuthenticationStatus;
 import com.cts.viewnews.bean.User;
+import com.cts.viewnews.jwt.security.JwtGenerator;
 import com.cts.viewnews.service.UserService;
 
 @RestController
@@ -20,12 +21,22 @@ public class LoginController extends ExceptionController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private JwtGenerator jwtGenerator;
 
 	@PostMapping("/check")
 	public AuthenticationStatus signup(@RequestBody User user) {
 		LOGGER.info("Inside of signup() method of SignUpController");
 		System.out.println("User in Login" + user);
-		return userService.login(user);
+		
+		AuthenticationStatus status =  userService.login(user);
+
+		if (status.isAuthStatus()) {
+			status.setToken(jwtGenerator.generate(status.getUser()));
+			LOGGER.debug("Token : {}", status.getToken());
+		}
+		return status;
 	}
 
 }
