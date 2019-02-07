@@ -12,7 +12,7 @@ import { FindanalystComponent } from '../findanalyst/findanalyst.component';
 import { LoginService } from '../login.service';
 import { FavouriteComponent } from '../favourite/favourite.component';
 
-describe('LoginComponent', () => {
+fdescribe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let de : DebugElement;
@@ -58,12 +58,12 @@ describe('LoginComponent', () => {
     expect(component.loginform.valid).toBeFalsy();
   }));
 
-  /* it('should call the login method', async(()=> {
+  it('should call the login method', async(()=> {
     fixture.detectChanges();
     spyOn(component, 'login');
     el =fixture.debugElement.query(By.css('button')).nativeElement;
     el.click();
     expect(component.login).toHaveBeenCalledTimes(1);
-  })); */
+  })); 
 
 });

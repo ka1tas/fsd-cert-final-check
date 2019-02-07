@@ -29,6 +29,11 @@ describe('Login page', () => {
         browser.wait(EC.visibilityOf(page.getErrorMessage()));
         expect(page.getErrorMessage().getText()).toBe('Email or Password did not matched!');
     });
+
+
+    
+
+
 });
 
 
